@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import Layout from 'components/Layout'
-import { getAllPostSlugs, getPostData } from '../../lib/posts'
 import { GetStaticPaths } from 'next'
 import Head from 'next/head'
-import { DateView } from '../../components/Date'
-import utilStyles from 'styles/utils.module.css'
+import utilStyles from '@/styles/utils.module.css'
+import { DateView } from '@/components/Date'
+import { Layout } from '@/components/Layout'
+import { getAllPostSlugs, getPostData } from '@/lib/posts'
 
 const getStaticPaths: GetStaticPaths = async() => {
   // Return a list of possible value for id
@@ -51,4 +51,5 @@ export {
   getStaticPaths,
   getStaticProps,
 }
+
 export default Post

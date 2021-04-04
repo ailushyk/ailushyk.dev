@@ -12,7 +12,7 @@ interface Props {
   home?: boolean
 }
 
-const Layout: FC<Props> = ({ home = false, children }) => (
+export const Layout: FC<Props> = ({ home = false, children }) => (
   <div className={styles.container}>
     <Head>
       <title>{siteTitle}</title>
@@ -68,4 +68,3 @@ const Layout: FC<Props> = ({ home = false, children }) => (
     <main>{children}</main>
   </div>
 )
-export default Layout
