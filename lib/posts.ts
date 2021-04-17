@@ -6,27 +6,36 @@ import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'data/posts')
 
-const getAllPostSlugs = () => {
-  const fileNames = fs.readdirSync(postsDirectory)
+const getPosts = (locale: string) => {
+  const fileNames = fs.readdirSync(`${postsDirectory}/${locale}`)
 
   return fileNames.map(fileName => {
     return {
       params: {
         slug: fileName.replace(/\.md$/, ''),
       },
+      locale,
     }
   })
 }
 
-const getSortedPostsData = () => {
+const getAllPostSlugs = (locales) => {
+  return locales.reduce((acc: any[], locale) => {
+    acc = acc.concat(getPosts(locale))
+    return acc
+  }, [])
+}
+
+const getSortedPostsData = (locale: string) => {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory)
+  const localePostsDirectory = `${postsDirectory}/${locale}`
+  const fileNames = fs.readdirSync(localePostsDirectory)
   const allPostsData = fileNames.map(fileName => {
     // Remove ".md" from file name to get id
     const slug = fileName.replace(/\.md$/, '')
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName)
+    const fullPath = path.join(localePostsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
 
     // Use gray-matter to parse the post metadata section
@@ -49,8 +58,8 @@ const getSortedPostsData = () => {
   })
 }
 
-const getPostData = async slug => {
-  const fullPath = path.join(postsDirectory, `${slug}.md`)
+const getPostData = async(slug: string, locale: string) => {
+  const fullPath = path.join(`${postsDirectory}/${locale}`, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
   // Use gray-matter to parse the post metadata section

@@ -6,18 +6,18 @@ import { DateView } from '@/components/Date'
 import { Layout } from '@/components/Layout'
 import { getAllPostSlugs, getPostData } from '@/lib/posts'
 
-const getStaticPaths: GetStaticPaths = async() => {
+const getStaticPaths: GetStaticPaths = async({ locales }) => {
   // Return a list of possible value for id
-  const paths = getAllPostSlugs()
+  const paths = getAllPostSlugs(locales)
   return {
     paths,
     fallback: false,
   }
 }
 
-const getStaticProps = async({ params }) => {
+const getStaticProps = async({ params, locale }) => {
   // Fetch necessary data for the blog post using params.id
-  const post = await getPostData(params.slug)
+  const post = await getPostData(params.slug, locale)
   return {
     props: {
       post,
