@@ -1,27 +1,30 @@
 import React, { FC } from 'react'
-import { GetStaticPaths } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import utilStyles from '@/styles/utils.module.css'
-import { DateView } from '@/components/Date'
 import { Layout } from '@/components/Layout'
-import { getAllPostSlugs, getPostData } from '@/lib/posts'
+import { RichText } from 'prismic-reactjs'
+import { DateView } from '@/components/DateView'
+import { postsService } from '@/lib/api/postsService'
+import { Locales } from '@/lib/constants'
 
 const getStaticPaths: GetStaticPaths = async() => {
-  // Return a list of possible value for id
-  const paths = getAllPostSlugs()
+  const paths = await postsService.getPostsPaths()
   return {
     paths,
-    fallback: false,
+    fallback: false
   }
 }
 
-const getStaticProps = async({ params }) => {
-  // Fetch necessary data for the blog post using params.id
-  const post = await getPostData(params.slug)
+const getStaticProps: GetStaticProps = async({ params }) => {
+  // TODO: set up i18next
+  const locale = Locales.pl
+  const post = await postsService.getPostData({ slug: params.slug as string, locale })
   return {
     props: {
       post,
     },
+    revalidate: 1
   }
 }
 
@@ -33,15 +36,15 @@ const Post: FC<Props> = ({ post }) => {
   return (
     <Layout>
       <Head>
-        <title>{post.title}</title>
+        <title>{RichText.asText(post.node.title)}</title>
       </Head>
 
       <article>
-        <h1 className={utilStyles.headingXl}>{post.title}</h1>
+        <h1 className={utilStyles.headingXl}>{RichText.asText(post.node.title)}</h1>
         <div className={utilStyles.lightText}>
-          <DateView date={post.date} />
+          <DateView date={post.node._meta.firstPublicationDate} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        <RichText render={post.node.content} />
       </article>
     </Layout>
   )

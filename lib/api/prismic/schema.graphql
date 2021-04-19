@@ -1,0 +1,31 @@
+enum SortPosty {
+  meta_firstPublicationDate_DESC,
+  meta_firstPublicationDate_ASC,
+  meta_lastPublicationDate_DESC,
+  meta_lastPublicationDate_ASC
+}
+
+type Meta {
+  id: String
+  uid: String
+  lang: String
+  firstPublicationDate: String
+}
+
+type Node {
+  _meta: Meta
+  title: String
+  content: String
+}
+
+type Edges {
+  node: [Node]
+}
+
+type AllPosts {
+  edges: Edges!
+}
+
+type Query {
+  allPosts(id: String, uid: String, lang: String, sortBy: SortPosty): AllPosts!
+}
