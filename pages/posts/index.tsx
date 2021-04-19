@@ -21,13 +21,6 @@ export const getStaticProps: GetStaticProps = async() => {
 }
 
 const Index = ({ allPostsData }) => {
-  useEffect(() => {
-    const t = async() => {
-      const response = await postsService.getPostsPaths()
-      console.log(response)
-    }
-    t()
-  })
   return (
     <Layout>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
