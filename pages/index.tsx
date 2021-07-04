@@ -7,7 +7,10 @@ export default function Home() {
     <Layout home>
       <section className={utilStyles.headingMd}>
         <p>Hello, I'm Alex. I'm software engineer</p>
-        <p>My <Link href={'/posts'}>posts</Link></p>
+        <ul>
+          <li>My <Link href={'/posts'}>posts</Link></li>
+          <li><Link href={'/skill-factory'}>Skill Factory</Link></li>
+        </ul>
       </section>
     </Layout>
   )
