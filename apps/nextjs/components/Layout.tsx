@@ -1,15 +1,15 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from './layout.module.css'
-import utilStyles from '@/styles/utils.module.css'
-import Link from 'next/link'
-import { FC } from 'react'
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from './layout.module.css';
+import utilStyles from '@/styles/utils.module.css';
+import Link from 'next/link';
+import { FC } from 'react';
 
-const name = 'Alex I.'
-export const siteTitle = 'Alex I.dev'
+const name = 'Alex I.';
+export const siteTitle = 'Alex I.dev';
 
 interface Props {
-  home?: boolean
+  home?: boolean;
 }
 
 export const Layout: FC<Props> = ({ home = false, children }) => (
@@ -24,7 +24,7 @@ export const Layout: FC<Props> = ({ home = false, children }) => (
       <meta
         property="og:image"
         content={`https://og-image.vercel.app/${encodeURI(
-          siteTitle,
+          siteTitle
         )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
       />
       <meta name="og:title" content={siteTitle} />
@@ -67,4 +67,4 @@ export const Layout: FC<Props> = ({ home = false, children }) => (
     </header>
     <main>{children}</main>
   </div>
-)
+);
