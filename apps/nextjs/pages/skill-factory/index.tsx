@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import { Layout } from '@/components/Layout'
+import React, { FC } from 'react';
+import { Layout } from '@/components/Layout';
 
 const SkillFactory: FC = () => {
   return (
@@ -28,7 +28,10 @@ const SkillFactory: FC = () => {
           <li>Static Analysis Testing JavaScript Applications</li>
           <li>Use DOM Testing Library to test any JS framework</li>
           <li>Test React Components with Jest and React Testing Library</li>
-          <li>Install, Configure, and Script Cypress for JavaScript Web Applications</li>
+          <li>
+            Install, Configure, and Script Cypress for JavaScript Web
+            Applications
+          </li>
           <li>Configure Jest for Testing JavaScript Applications</li>
           <li>Test Node.js Backends</li>
         </ul>
@@ -47,22 +50,33 @@ const SkillFactory: FC = () => {
           <p>Decentralized applications</p>
         </hgroup>
         <ul>
-          <li><a href="https://ethereum.org/en/dapps/">https://ethereum.org/en/dapps/</a></li>
+          <li>
+            <a href="https://ethereum.org/en/dapps/">
+              https://ethereum.org/en/dapps/
+            </a>
+          </li>
           <li>https://www.youtube.com/user/boyindasouth</li>
         </ul>
       </article>
 
       <article>
         <h2>Supabase</h2>
-        <p><a href="https://supabase.io/">https://supabase.io/</a></p>
+        <p>
+          <a href="https://supabase.io/">https://supabase.io/</a>
+        </p>
       </article>
 
       <article>
         <h2>Firebase</h2>
-        <p><a href="https://firebase.google.com/docs/guides/">https://firebase.google.com/docs/guides/</a> ✔</p>
+        <p>
+          <a href="https://firebase.google.com/docs/guides/">
+            https://firebase.google.com/docs/guides/
+          </a>{' '}
+          ✔
+        </p>
       </article>
     </Layout>
-  )
-}
+  );
+};
 
-export default SkillFactory
+export default SkillFactory;

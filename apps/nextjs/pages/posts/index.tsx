@@ -1,23 +1,23 @@
-import React from 'react'
-import Link from 'next/link'
-import { Layout } from '@/components/Layout'
-import { DateView } from '@/components/DateView'
-import utilStyles from '@/styles/utils.module.css'
-import { RichText } from 'prismic-reactjs'
-import { postsService } from '@/lib/api/postsService'
-import { GetStaticProps } from 'next'
-import { useLocale } from '@/lib/useLocale'
+import React from 'react';
+import Link from 'next/link';
+import { Layout } from '@/components/Layout';
+import { DateView } from '@/components/DateView';
+import utilStyles from '@/styles/utils.module.css';
+import { RichText } from 'prismic-reactjs';
+import { postsService } from '@/lib/api/postsService';
+import { GetStaticProps } from 'next';
+import { useLocale } from '@/lib/useLocale';
 
-export const getStaticProps: GetStaticProps = async() => {
-  const { locale } = useLocale()
-  const allPostsData = await postsService.getSortedPostsData({ locale })
+export const getStaticProps: GetStaticProps = async () => {
+  const { locale } = useLocale();
+  const allPostsData = await postsService.getSortedPostsData({ locale });
   return {
     props: {
       allPostsData,
     },
     revalidate: 1,
-  }
-}
+  };
+};
 
 const Index = ({ allPostsData }) => {
   return (
@@ -37,7 +37,7 @@ const Index = ({ allPostsData }) => {
         </ul>
       </section>
     </Layout>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
