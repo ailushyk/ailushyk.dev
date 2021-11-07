@@ -6,6 +6,7 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
@@ -20,6 +21,10 @@
   "rules": {
     "prettier/prettier": "error",
     "arrow-body-style": "off",
-    "prefer-arrow-callback": "off"
+    "prefer-arrow-callback": "off",
+    "react/self-closing-comp": ["error", {
+      "component": true,
+      "html": true
+    }]
   }
 }
