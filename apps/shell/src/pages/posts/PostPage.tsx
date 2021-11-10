@@ -1,16 +1,22 @@
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
+import { usePost } from '../../data/posts/usePost';
+import BlockContent from '@sanity/block-content-to-react';
+import { Loading } from '../../components/Loading';
 
 const PostPage: FC = () => {
-  const { post } = useParams();
+  const { slug } = useParams();
+  const { data, isLoading } = usePost(slug as string);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div>
-      <div>Post: {post}</div>
+      <div>Post: {slug}</div>
       <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
-        asperiores culpa, cupiditate dolor, error fuga, illo laudantium minima
-        nobis omnis perspiciatis qui sequi sit suscipit voluptatibus. Aperiam
-        laudantium similique veniam?
+        <BlockContent blocks={data?.[0].body} />
       </div>
     </div>
   );
