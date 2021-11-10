@@ -12,12 +12,13 @@ const PostsPage: FC = () => {
 
   return (
     <div>
-      <h2>Posts</h2>
+      <h1>Posts</h1>
 
       {data?.map((post) => (
-        <div key={post.slug.current}>
+        <article key={post.slug.current}>
           <Link to={post.slug.current}>{post.title}</Link>
-        </div>
+          <div>{post.publishedAt.toDateString()}</div>
+        </article>
       ))}
     </div>
   );

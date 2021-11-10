@@ -1,9 +1,14 @@
 import { api } from '../../config';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 interface Post {
-  slug: { _type: string; current: string };
   title: string;
-  body: any;
+  slug: { _type: string; current: string };
+  author: string;
+  body: string | undefined;
+  publishedAt: Date;
+  authorImage: SanityImageSource;
+  mainImage: SanityImageSource;
 }
 
 const getPosts = () => {
@@ -11,31 +16,29 @@ const getPosts = () => {
     `*[_type == "post"]{
         title,
         slug,
-        mainImage{
-          asset->{
-          _id,
-          url
-        }
-      }
+        publishedAt
     }`
   );
 };
 
 const getPost = (slug: string) => {
   return api.fetch(
-    `*[slug.current == $slug]{
-          title,
-          slug,
-          mainImage{
-            asset->{
-              _id,
-              url
-             }
-           },
-         body,
-        "name": author->name,
-        "authorImage": author->image
-       }`,
+    `
+      *[_type == "post" && slug.current == $slug] {
+        title,
+        publishedAt,
+        "slug": slug.current,
+        mainImage{
+          asset->{
+            _id,
+            url
+          }
+        },
+        body,
+        "author": author->name,
+        "authorImage": author->image,
+      }
+    `,
     { slug }
   );
 };
