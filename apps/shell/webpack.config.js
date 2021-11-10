@@ -20,7 +20,7 @@ module.exports = {
     historyApiFallback: true,
   },
   output: {
-    publicPath: 'auto',
+    publicPath: '/',
     clean: true,
   },
   resolve: {
@@ -38,7 +38,10 @@ module.exports = {
             '@babel/preset-react',
             '@babel/preset-typescript',
           ],
-          plugins: [require.resolve('react-refresh/babel')],
+          plugins: [
+            require.resolve('react-refresh/babel'),
+            '@babel/plugin-transform-runtime',
+          ],
         },
       },
     ],

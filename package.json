@@ -1,10 +1,13 @@
 {
   "name": "ailushyk.dev",
   "version": "0.0.1",
+  "private": true,
   "description": "My personal page",
   "scripts": {
-    "start": "lerna run --parallel start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "lerna run --parallel start --ignore @ailushyk/nextjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "studio": "npm run start -w apps/sanity-studio",
+    "start:shell": "npm run start -w apps/shell"
   },
   "repository": {
     "type": "git",

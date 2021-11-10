@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Suspense } from 'react';
-import { configApp } from './config';
 import { Route, Routes } from 'react-router-dom';
 import { Loading } from './components/Loading';
 
@@ -14,8 +13,6 @@ const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 const PostPage = React.lazy(() => import('./pages/posts/PostPage'));
 
-configApp();
-
 export const App = () => {
   return (
     <Suspense fallback={<Loading />}>
@@ -24,7 +21,7 @@ export const App = () => {
           <Route index element={<HomePage />} />
           <Route path="posts">
             <Route index element={<PostsPage />} />
-            <Route path=":post" element={<PostPage />} />
+            <Route path=":slug" element={<PostPage />} />
           </Route>
           <Route path="skill-factory" element={<SkillFactoryPage />} />
           <Route path="about" element={<AboutPage />} />
