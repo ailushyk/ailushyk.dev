@@ -1,8 +1,7 @@
 import React, { FC, Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Loading } from './Loading';
-// @ts-ignore
-const RemoteComponent = React.lazy(() => import('ui/CoolComponent'));
+const RemoteComponent = React.lazy(() => import('ui/components/CoolComponent'));
 
 const Layout: FC = () => (
   <div>

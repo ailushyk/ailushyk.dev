@@ -49,7 +49,7 @@ module.exports = {
       name: 'ui',
       filename: 'remoteEntry.js',
       exposes: {
-        './CoolComponent': './src/components/CoolComponent',
+        './components/CoolComponent': './src/components/CoolComponent',
       },
       remotes: {},
       shared: {
