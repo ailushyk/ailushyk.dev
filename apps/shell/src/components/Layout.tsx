@@ -1,6 +1,8 @@
 import React, { FC, Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Loading } from './Loading';
+// @ts-ignore
+const RemoteComponent = React.lazy(() => import('ui/CoolComponent'));
 
 const Layout: FC = () => (
   <div>
@@ -12,6 +14,9 @@ const Layout: FC = () => (
     <main>
       <Suspense fallback={<Loading />}>
         <Outlet />
+      </Suspense>
+      <Suspense fallback={<Loading />}>
+        <RemoteComponent />
       </Suspense>
     </main>
   </div>

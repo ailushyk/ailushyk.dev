@@ -7,7 +7,10 @@
     "start": "lerna run --parallel start --ignore @ailushyk/nextjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "studio": "npm run start -w apps/sanity-studio",
-    "start:shell": "npm run start -w apps/shell"
+    "start:app": "lerna run --scope @ailushyk/shell --scope @ailushyk/ui start",
+    "start:shell": "npm run start -w apps/shell",
+    "start:studio": "npm run start -w apps/shell",
+    "start:ui": "npm run start -w packages/ui"
   },
   "repository": {
     "type": "git",
