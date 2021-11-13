@@ -1,7 +1,7 @@
-import { Block } from './Block';
-import { Caption } from './Caption';
-import { Main } from './Main';
-import { Nav } from './Nav';
-import { Text } from './Text';
+import('../index.css');
 
-export { Block, Caption, Main, Nav, Text };
+export * from './Block';
+export * from './Caption';
+export * from './Main';
+export * from './Nav';
+export * from './Text';
