@@ -1,6 +1,6 @@
 import React, { FC, HTMLProps } from 'react';
 
-interface CaptionProps extends HTMLProps<HTMLHeadElement> {
+export interface CaptionProps extends HTMLProps<HTMLHeadElement> {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 

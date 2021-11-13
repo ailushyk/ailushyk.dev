@@ -1,6 +1,6 @@
 import React, { FC, HTMLProps } from 'react';
 
-interface BlockProps extends HTMLProps<HTMLDivElement> {
+export interface BlockProps extends HTMLProps<HTMLDivElement> {
   as?: 'div';
 }
 
