@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
+import { Block, Caption, Text } from 'ui/elements';
 
 const HomePage: FC = () => {
   return (
-    <div>
-      <h2>Welcome!</h2>
+    <Block>
+      <Caption>Welcome!</Caption>
       {/* eslint-disable-next-line react/no-unescaped-entities */}
-      <p>Hello, I'm Alex. I'm software engineer</p>
-    </div>
+      <Text>Hello, I'm Alex. I'm software engineer</Text>
+    </Block>
   );
 };
 export default HomePage;

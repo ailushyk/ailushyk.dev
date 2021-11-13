@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { usePost } from '../../data/posts/usePost';
-import { Loading } from '../../components/Loading';
+import { Loading } from 'ui/components';
 import ReactMarkdown from 'react-markdown';
 import { AuthorImage } from '../../components/Image/AuthorImage';
 import { MainPostImage } from '../../components/Image/MainPostImage';
+import { Block, Caption } from 'ui/elements';
 
 const PostPage: FC = () => {
   const { slug } = useParams();
@@ -15,20 +16,20 @@ const PostPage: FC = () => {
   }
 
   if (!data) {
-    return <div>Post does not exist</div>;
+    return <Block>Post does not exist</Block>;
   }
 
   return (
     <article>
       <header>
-        <h1>{data.title}</h1>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Caption as={'h1'}>{data.title}</Caption>
+        <Block style={{ display: 'flex', alignItems: 'center' }}>
           <AuthorImage img={data.authorImage} />
-          <div>
-            <div>
+          <Block>
+            <Block>
               <b>{data.author}</b>
-            </div>
-            <div>
+            </Block>
+            <Block>
               on{' '}
               <time
                 dateTime={data.publishedAt.toString()}
@@ -36,9 +37,9 @@ const PostPage: FC = () => {
               >
                 {data.publishedAt.toDateString()}
               </time>
-            </div>
-          </div>
-        </div>
+            </Block>
+          </Block>
+        </Block>
       </header>
       <MainPostImage img={data.mainImage} />
       <ReactMarkdown>{data.body as string}</ReactMarkdown>

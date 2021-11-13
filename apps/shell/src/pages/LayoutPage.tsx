@@ -1,6 +1,6 @@
 import React, { FC, Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Loading } from '../components/Loading';
+import { Loading } from 'ui/components';
 import { Layout } from 'ui/templates/Layout';
 
 const LayoutPage: FC = () => (
@@ -8,7 +8,7 @@ const LayoutPage: FC = () => (
     <Layout.Nav>
       <Link to="/">Home</Link> |<Link to="/posts">My posts</Link> |{' '}
       <Link to="/skill-factory">Skill Factory</Link> |{' '}
-      <Link to="/about">About</Link> |{' '}
+      <Link to="/about">About</Link> | <Link to="/notfound">404</Link> |{' '}
     </Layout.Nav>
     <Layout.Main>
       <Suspense fallback={<Loading />}>

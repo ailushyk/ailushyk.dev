@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
 
-export const Main: FC = ({ children }) => {
-  return <main>{children}</main>;
+export const Main: FC = ({ children, ...props }) => {
+  return React.createElement('main', props, children);
 };
