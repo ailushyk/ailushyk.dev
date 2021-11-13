@@ -1,24 +1,21 @@
 import React, { FC, Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Loading } from './Loading';
-const RemoteComponent = React.lazy(() => import('ui/components/CoolComponent'));
+import { Loading } from '../components/Loading';
+import { Layout } from 'ui/templates/Layout';
 
-const Layout: FC = () => (
-  <div>
-    <nav>
+const LayoutPage: FC = () => (
+  <Layout>
+    <Layout.Nav>
       <Link to="/">Home</Link> |<Link to="/posts">My posts</Link> |{' '}
       <Link to="/skill-factory">Skill Factory</Link> |{' '}
       <Link to="/about">About</Link> |{' '}
-    </nav>
-    <main>
+    </Layout.Nav>
+    <Layout.Main>
       <Suspense fallback={<Loading />}>
         <Outlet />
       </Suspense>
-      <Suspense fallback={<Loading />}>
-        <RemoteComponent />
-      </Suspense>
-    </main>
-  </div>
+    </Layout.Main>
+  </Layout>
 );
 
-export default Layout;
+export default LayoutPage;
