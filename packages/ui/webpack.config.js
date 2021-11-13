@@ -3,6 +3,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 const path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const getExposes = require('./src/getExposes');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
@@ -48,9 +49,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'ui',
       filename: 'remoteEntry.js',
-      exposes: {
-        './components/CoolComponent': './src/components/CoolComponent',
-      },
+      exposes: getExposes(),
       remotes: {},
       shared: {
         ...deps,

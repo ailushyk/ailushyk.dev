@@ -4,13 +4,14 @@
   "private": true,
   "description": "My personal page",
   "scripts": {
-    "start": "lerna run --parallel start --ignore @ailushyk/nextjs",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "studio": "npm run start -w apps/sanity-studio",
-    "start:app": "lerna run --scope @ailushyk/shell --scope @ailushyk/ui start",
-    "start:shell": "npm run start -w apps/shell",
-    "start:studio": "npm run start -w apps/shell",
-    "start:ui": "npm run start -w packages/ui"
+    "start": "lerna run start --scope @ailushyk/shell --scope @ailushyk/ui --parallel",
+    "studio": "lerna run start --scope @ailushyk/sanity-studio",
+    "storybook": "lerna run storybook --scope @ailushyk/ui",
+    "start:shell": "lerna run start --scope @ailushyk/shell",
+    "start:ui": "lerna run start --scope @ailushyk/ui",
+    "start:next": "lerna run start --scope @ailushyk/nextjs",
+    "start:all": "echo \"Start all apps and packages\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
