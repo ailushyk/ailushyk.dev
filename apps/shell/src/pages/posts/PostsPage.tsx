@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { usePosts } from '../../data/posts/usePosts';
-import { Loading } from '../../components/Loading';
+import { Loading } from 'ui/components';
+import { Block, Caption } from 'ui/elements';
 
 const PostsPage: FC = () => {
   const { data, isLoading } = usePosts();
@@ -11,16 +12,16 @@ const PostsPage: FC = () => {
   }
 
   return (
-    <div>
-      <h1>Posts</h1>
+    <Block>
+      <Caption as={'h1'}>Posts</Caption>
 
       {data?.map((post) => (
         <article key={post.slug.current}>
           <Link to={post.slug.current}>{post.title}</Link>
-          <div>{post.publishedAt.toDateString()}</div>
+          <Block>{post.publishedAt.toDateString()}</Block>
         </article>
       ))}
-    </div>
+    </Block>
   );
 };
 

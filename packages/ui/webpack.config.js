@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { ModuleFederationPlugin } = require('webpack').container;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 const path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const getExposes = require('./src/getExposes');
 const deps = require('./package.json').dependencies;
 
 module.exports = {
-  entry: './src/index',
   mode: 'development',
   devtool: 'source-map',
   optimization: {
@@ -16,12 +15,11 @@ module.exports = {
   devServer: {
     hot: true,
     static: path.join(__dirname, 'dist'),
-    port: 3001,
+    port: 3012,
     liveReload: false,
-    historyApiFallback: true,
   },
   output: {
-    publicPath: '/',
+    publicPath: 'auto',
     clean: true,
   },
   resolve: {
@@ -49,16 +47,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'shell',
+      name: 'ui',
       filename: 'remoteEntry.js',
-      exposes: {
-        // "./Button": "./src/Button",
-        // "./Heading": "./src/Heading",
-      },
-      remotes: {
-        ui: 'ui@[uiUrl]/remoteEntry.js',
-        utils: 'utils@[utilsUrl]/remoteEntry.js',
-      },
+      exposes: getExposes(),
+      remotes: {},
       shared: {
         ...deps,
         react: {
@@ -79,10 +71,6 @@ module.exports = {
       },
     }),
     new ExternalTemplateRemotesPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      chunks: ['main'],
-    }),
     new ReactRefreshWebpackPlugin({
       exclude: [/node_modules/, /bootstrap\.js$/],
     }),

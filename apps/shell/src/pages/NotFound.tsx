@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
+import { Text } from 'ui/elements';
 
-const NotFound: FC = () => <div>Not Found 404</div>;
+const NotFound: FC = () => {
+  return <Text>404</Text>;
+};
 
 export default NotFound;

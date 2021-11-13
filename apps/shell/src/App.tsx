@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Loading } from './components/Loading';
+import { Loading } from 'ui/components';
 
-const Layout = React.lazy(() => import('./components/Layout'));
+const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 const HomePage = React.lazy(() => import('./pages/HomePage'));
+const LayoutPage = React.lazy(() => import('./pages/LayoutPage'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
+const PostPage = React.lazy(() => import('./pages/posts/PostPage'));
 const PostsPage = React.lazy(() => import('./pages/posts/PostsPage'));
 const SkillFactoryPage = React.lazy(
   () => import('./pages/skill-factory/SkillFactoryPage')
 );
-const AboutPage = React.lazy(() => import('./pages/AboutPage'));
-const NotFound = React.lazy(() => import('./pages/NotFound'));
-const PostPage = React.lazy(() => import('./pages/posts/PostPage'));
 
 export const App = () => {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<LayoutPage />}>
           <Route index element={<HomePage />} />
           <Route path="posts">
             <Route index element={<PostsPage />} />
