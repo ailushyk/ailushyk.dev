@@ -28,6 +28,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.(png|jpg|jpeg|svg)$/i,
+        type: 'asset/resource',
+      },
+      {
         test: /\.(ts|js)x?$/i,
         loader: 'babel-loader',
         exclude: /node_modules/,
@@ -62,11 +70,6 @@ module.exports = {
           singleton: true,
           eager: true,
           requiredVersion: deps['react-dom'],
-        },
-        'react-router-dom': {
-          singleton: true,
-          // eager: true,
-          requiredVersion: deps['react-router-dom'],
         },
       },
     }),

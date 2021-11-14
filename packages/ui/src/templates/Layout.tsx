@@ -7,7 +7,11 @@ LayoutContext.displayName = 'Layout';
 
 const NavComponent: FC = ({ children }) => {
   useCompoundContext(LayoutContext);
-  return <Nav>{children}</Nav>;
+  return (
+    <Nav className={'m-4 border-solid border-4 border-light-blue-500'}>
+      {children}
+    </Nav>
+  );
 };
 
 const MainComponent: FC = ({ children }) => {
