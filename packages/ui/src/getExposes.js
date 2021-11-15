@@ -6,5 +6,6 @@ module.exports = () => {
     './elements': './src/elements',
     './templates/Layout': './src/templates/Layout',
     './components/CoolComponent': './src/components/CoolComponent',
+    './components/Post': './src/components/Post',
   };
 };

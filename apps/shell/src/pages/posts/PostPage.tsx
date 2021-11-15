@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { usePost } from '../../data/posts/usePost';
 import { Loading } from 'ui/components';
-import ReactMarkdown from 'react-markdown';
 import { AuthorImage } from '../../components/Image/AuthorImage';
 import { MainPostImage } from '../../components/Image/MainPostImage';
 import { Block, Caption } from 'ui/elements';
+import Post from 'ui/components/Post';
 
 const PostPage: FC = () => {
   const { slug } = useParams();
@@ -42,7 +42,7 @@ const PostPage: FC = () => {
         </Block>
       </header>
       <MainPostImage img={data.mainImage} />
-      <ReactMarkdown>{data.body as string}</ReactMarkdown>
+      <Post.Md>{data.body as string}</Post.Md>
     </article>
   );
 };
