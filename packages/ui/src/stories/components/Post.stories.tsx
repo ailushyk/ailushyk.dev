@@ -25,6 +25,7 @@ const element = (
       series of rabies cases springing up around the country.
     </p>
     <CodeBlock language={'typescript'}>{code}</CodeBlock>
+    <CodeBlock language={'javascript'}>{code}</CodeBlock>
   </article>
 );
 
