@@ -1,6 +1,15 @@
 import React, { FC } from 'react';
 import { Meta, Story } from '@storybook/react';
 import Post, { IPostMd } from '../../components/Post';
+import { CodeBlock } from '../../elements/CodeBlock';
+
+const code =
+  '// test\n' +
+  "console.log('test')\n\n" +
+  'const tmp = {\n  a: 123\n}\n\n' +
+  'export const hello = (name: string) => {\n' +
+  '  return `Hello ${name}`;\n' +
+  '};';
 
 const element = (
   <article>
@@ -15,6 +24,7 @@ const element = (
       But a recent study shows that the celebrated appetizer may be linked to a
       series of rabies cases springing up around the country.
     </p>
+    <CodeBlock language={'typescript'}>{code}</CodeBlock>
   </article>
 );
 
@@ -35,12 +45,9 @@ const markdown =
   '| - | - |\n' +
   '\n' +
   'Code:\n' +
-  '```javascript\n' +
-  '// test\n' +
-  "console.log('test')\n" +
-  'const tmp = {\n' +
-  "  a: 'a'\n" +
-  '}\n' +
+  '```typescript\n' +
+  code +
+  '\n' +
   '```';
 
 const Default: Story<FC> = (args) => {
